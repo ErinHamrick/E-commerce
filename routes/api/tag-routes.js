@@ -70,12 +70,11 @@ router.put("/:id", async (req, res) => {
 				where: { id: tagId },
 			}
 		);
-// Fetch updated tag
+		// Fetch updated tag
 		const updatedTag = await Tag.findByPk(tagId);
 
 		res.status(200).json({ updatedTag });
-
-  } catch (error) {
+	} catch (error) {
 		console.error(error);
 		res.status(500).json({
 			error: "Internal Server Error",
@@ -84,8 +83,25 @@ router.put("/:id", async (req, res) => {
 	}
 });
 
+// delete on tag by its `id` value
 router.delete("/:id", async (req, res) => {
-	// delete on tag by its `id` value
+	const tagId = req.params.id;
+
+	try {
+		const existingTag = await Tag.findByPk(tagId);
+
+		// If the tag doesn't exist, return a 404 error
+		if (!existingTag) {
+			return res.status(404).json({ message: "Tag not found" });
+		}
+		await existingTag.destroy();
+	} catch (error) {
+		console.error(error);
+		res.status(500).json({
+			error: "Internal Server Error",
+			message: error.message,
+		});
+	}
 });
 
 module.exports = router;
