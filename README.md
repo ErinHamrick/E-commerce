@@ -8,25 +8,24 @@ A brief description of your e-commerce project.
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Usage](#usage)
-- [Database Schema](#database-schema)
-- [Contributing](#contributing)
 - [License](#license)
-- [Acknowledgments](#acknowledgments)
 - [Contact](#contact)
 - [Demo](#demo)
-- [Screenshots](#screenshots)
+
 
 ## Technologies Used
 
-- List the technologies, programming languages, and frameworks you used in your project, e.g., Node.js, Express, MongoDB.
+- Node.js 
+- Express
+- Sequelize/SQL
 
 ## Installation
 
-Provide step-by-step instructions on how to install your project locally.
+Run schema file in mysql shell.
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/your-project.git
+git clone https://github.com/ErinHamrick/E-commerce.git
 
 # Change to the project directory
 cd your-project
@@ -36,3 +35,24 @@ npm install
 
 # Seed database
 npm run seed
+
+# Start server
+npm start
+```
+## Usage
+
+This application can be used to perform CRUD operations on a database containing 3 tables.
+
+## License
+
+This project is licensed under the MIT License.  See License file for more details. 
+
+## Contact
+
+**Email:** erin.hamrick76@gmail.com
+
+**GitHub:** https://github.com/ErinHamrick
+
+## Demo
+
+**DemoVideo:** https://drive.google.com/file/d/1CxG-qKDM2qLL3499-FjYMqx5jAroebTk/view
