@@ -7,7 +7,7 @@ router.get("/", async (req, res) => {
 	try {
 		// find all categories and include associated Products
 		const categories = await Category.findAll({
-			include: [{ model: Product, through: ProductTag }],
+			include: [Product],
 		});
 		res.status(200).json(categories);
 	} catch (error) {
@@ -25,7 +25,7 @@ router.get("/:id", async (req, res) => {
 	try {
 		const category = await Category.findOne({
 			where: { id: categoryId },
-			include: [{ model: Product, through: ProductTag }],
+			include: [Product],
 		});
 
 		if (!category) {
@@ -59,7 +59,7 @@ router.put("/:id", async (req, res) => {
 				id: req.params.id,
 			},
 		});
-		res.json(category).status(201);
+		res.json({message: "Category updated"}).status(201);
 	} catch (e) {
 		res.json(e).status(400);
 	}
@@ -77,6 +77,7 @@ router.delete("/:id", async (req, res) => {
 			return res.status(404).json({ message: "category not found" });
 		}
 		await existingCategory.destroy();
+		res.status(200).json({ message: "Category deleted successfully" });
 	} catch (error) {
 		console.error(error);
 		res.status(500).json({

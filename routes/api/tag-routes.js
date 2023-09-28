@@ -73,7 +73,7 @@ router.put("/:id", async (req, res) => {
 		// Fetch updated tag
 		const updatedTag = await Tag.findByPk(tagId);
 
-		res.status(200).json({ updatedTag });
+		res.status(200).json({ message: "Tag updated successfully" });
 	} catch (error) {
 		console.error(error);
 		res.status(500).json({
@@ -85,16 +85,18 @@ router.put("/:id", async (req, res) => {
 
 // delete on tag by its `id` value
 router.delete("/:id", async (req, res) => {
-	const tagId = req.params.id;
-
+	
 	try {
-		const existingTag = await Tag.findByPk(tagId);
+	const existingTag = await Tag.destroy({
+    where: {id: req.params.id}
+  })
 
-		// If the tag doesn't exist, return a 404 error
-		if (!existingTag) {
-			return res.status(404).json({ message: "Tag not found" });
-		}
-		await existingTag.destroy();
+  if (!existingTag) {
+    res.status(404).json( {message: "No tag found with that id"});
+    return;
+  }
+
+  res.status(200).json({message: "Tag deleted successfully"})
 	} catch (error) {
 		console.error(error);
 		res.status(500).json({
