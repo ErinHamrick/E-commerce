@@ -16,7 +16,7 @@ A brief description of your e-commerce project.
 ## Technologies Used
 
 - Node.js 
-- Express
+- Express  
 - Sequelize/SQL
 
 ## Installation
