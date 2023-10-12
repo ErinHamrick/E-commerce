@@ -1,6 +1,8 @@
-# Project Name
+# E-Commerce back-end
 
-A brief description of your e-commerce project.
+## Description
+This application allows users to create and manage a database that includes tables for products, categories and tags.
+
 
 ## Table of Contents
 
